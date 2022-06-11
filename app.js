@@ -204,6 +204,23 @@ function check() {
                 intervalId = setInterval(gameTurn, 800)
             }
         }, 800);
+
         noise = false;
     }
+
+    if (turn == playerOrder.length && good && !win) {
+        turn++;
+        playerOrder = [];
+        compTurn = true;
+        flash = 0;
+        turnCounter.innerHTML = turn;
+        intervalId = setInterval(gameTurn, 800);
+    }
+}
+
+function winGame() {
+    flashColor();
+    turnCounter.innerHTML = "WIN!";
+    on = false;
+    win = true;
 }
