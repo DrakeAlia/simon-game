@@ -224,3 +224,5 @@ function winGame() {
     on = false;
     win = true;
 }
+
+console.log("Welcome to my Simon says Game!")
