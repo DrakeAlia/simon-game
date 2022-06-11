@@ -50,7 +50,7 @@ function play() {
     order = [];
     playerOrder = [];
     flash = 0;
-    intervalid = 0;
+    intervalId = 0;
     turn = 1;
     turnCounter.innerHTML = 1;
     good = true;
@@ -179,3 +179,31 @@ bottomRight.addEventListener("click", (event) => {
     }
 })
 
+function check() {
+    if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
+        good = false;
+
+    if (playerOrder.length == 20 && good == true) {
+        winGame();
+    }
+
+    if (good == false) {
+        flashColor();
+        turnCounter.innerHTML = "NO!";
+        setTimeout(() => {
+            turnCounter.innerHTML = turn;
+            clearColor();
+
+            if (strict) {
+                play();
+            } else {
+                compTurn = true;
+                flash = 0;
+                playerOrder = [];
+                good = true;
+                intervalId = setInterval(gameTurn, 800)
+            }
+        }, 800);
+        noise = false;
+    }
+}
